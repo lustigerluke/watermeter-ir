@@ -1,0 +1,1 @@
+This folder contains information and files to print an adapter which is meant to hold the ir-gateway in place on the flowiq2200.

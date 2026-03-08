@@ -1,0 +1,279 @@
+# This file will add the readings from flowiq2200 sensor as a sensor named watermeter-ir to your Home Assistant instance.
+# It will also add a button to update the firmware of your Kamst-IR Gateway and a binary sensor to show if an update is available. 
+# The sensors will be updated every time a new reading is received from the Kamst-IR Gateway.
+
+# Be aware that some values are only available if you have added them via a MQTT discovery message.
+
+mqtt:
+  sensor:
+    - name: "flow"
+      state_topic: "kamstir/reading/flow"
+      force_update: true
+      unique_id: kamstir_flow
+      unit_of_measurement: "L/h"
+      state_class: measurement
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "volume"
+      state_topic: "kamstir/reading/volume"
+      force_update: true
+      unit_of_measurement: "m³"
+      icon: mdi:barrel
+      device_class: "water"
+      state_class: "total_increasing"
+      unique_id: kamstir_volume
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "minflow_m"
+      state_topic: "kamstir/reading/minflow_m"
+      force_update: true
+      unique_id: kamstir_minflow_m
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "maxflow_m"
+      state_topic: "kamstir/reading/maxflow_m"
+      force_update: true
+      unique_id: kamstir_maxflow_m
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "minflowdate_m"
+      state_topic: "kamstir/reading/minflowdate_m"
+      force_update: true
+      unique_id: kamstir_minflowdate_m
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "maxflowdate_m"
+      state_topic: "kamstir/reading/maxflowdate_m"
+      force_update: true
+      unique_id: kamstir_maxflowdate_m
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "minflow_y"
+      state_topic: "kamstir/reading/minflow_y"
+      force_update: true
+      unique_id: kamstir_minflow_y
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "maxflow_y"
+      state_topic: "kamstir/reading/maxflow_y"
+      force_update: true
+      unique_id: kamstir_maxflow_y
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "minflowdate_y"
+      state_topic: "kamstir/reading/minflowdate_y"
+      force_update: true
+      unique_id: kamstir_minflowdate_y
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "maxflowdate_y"
+      state_topic: "kamstir/reading/maxflowdate_y"
+      force_update: true
+      unique_id: kamstir_maxflowdate_y
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "temp1xm3"
+      state_topic: "kamstir/reading/temp1xm3"
+      force_update: true
+      unique_id: kamstir_temp1xm3
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "temp2xm3"
+      state_topic: "kamstir/reading/temp2xm3"
+      force_update: true
+      unique_id: kamstir_temp2xm3
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "device temp"
+      state_topic: "kamstir/reading/meter_temp"
+      force_update: true
+      device_class: temperature
+      unit_of_measurement: "°C"
+      state_class: measurement
+      unique_id: kamstir_eter_temp
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "info_event"
+      state_topic: "kamstir/reading/infoevent"
+      force_update: true
+      unique_id: kamstir_infoevent
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "hourcounter"
+      state_topic: "kamstir/reading/hourcounter"
+      force_update: true
+      unique_id: kamstir_hourcounter
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "leak_burst"
+      state_topic: "kamstir/reading/leak_burst"
+      force_update: true
+      unique_id: kamstir_leak_burst
+      value_template: "{{ value | int }}"
+      icon: mdi:alert
+
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "battery days left"
+      state_topic: "kamstir/reading/battery_days_left"
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "MAC Adres"
+      state_topic: "kamstir/smart_gateways/mac_address"
+      value_template: "{{ value }}"
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "IP Address"
+      state_topic: "kamstir/smart_gateways/ip_address"
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "gateway_firmware_version"
+      state_topic: "kamstir/smart_gateways/running_firmware_version"
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "available_gateway_firmware_version"
+      state_topic: "kamstir/smart_gateways/available_firmware_version"
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "signal_strength(rssi)"
+      state_topic: "kamstir/smart_gateways/wifi_rssi"
+      unit_of_measurement: "dB"
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+    - name: "startup_time"
+      state_topic: "kamstir/smart_gateways/startup_time"
+      icon: mdi:clock-start
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+  ### SmartGateways.nl - Kamst-IR Gateway - firmware update switch
+  binary_sensor:
+    - name: "update_available"
+      state_topic: "kamstir/smart_gateways/update_available"
+      payload_on: "true"
+      payload_off: "false"
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+  button:
+    - name: "Update Firmware Now?"
+      unique_id: kamstir_smart_gateways_install_update
+      command_topic: "kamstir/smart_gateways/install_update"
+      payload_press: "yes"
+      entity_category: config
+      icon: mdi:package-down
+      device:
+        identifiers: "kamstirgateway"
+        name: "watermeter-ir"
+        manufacturer: "Smart Gateways"
+        model: "Kamst-IR Gateway"
+
+### SmartGateways.nl - Kamst-IR Gateway - Berekeningen
+template:
+  - sensor:
+      - name: "Kamst-IR Gateway - Last Changed"
+        device_class: timestamp
+        state: >
+          {% set values = [
+            states.sensor.kamst_ir_gateway_wifi_signaalsterkte_rssi.last_changed,
+          ] %}
+          {{ values | min }}
+
+  - binary_sensor:
+      - name: "Kamst-IR Gateway - Connectivity Status"
+        device_class: connectivity
+        state: "{{ now() - states.sensor.kamst_ir_gateway_wifi_signaalsterkte_rssi.last_changed < timedelta(minutes=10) }}"

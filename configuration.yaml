@@ -1,0 +1,7 @@
+# paste these two lines in your homeassistant configuration.yaml file.
+# make sure there is no other section "homeassistant:" already present in your configuration.yaml file
+#  if there already is a homeassistant section, just add the line "packages: !include_dir_named packages" to that section.
+# These lines will include everythig in the "packages" folder as a package, so you can split your configuration into multiple files and folders in the "packages" folder.
+
+homeassistant:
+  packages: !include_dir_named packages
